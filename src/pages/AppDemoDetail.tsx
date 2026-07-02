@@ -23,6 +23,37 @@ const BENEFIT_COLORS = [
   { bg: "bg-amber-500/10", border: "border-amber-500/20", text: "text-amber-400" },
 ];
 
+const BENEFIT_STYLES = [
+  {
+    bg: "bg-gradient-to-br from-cyan-500/10 via-cyan-950/20 to-transparent",
+    border: "border-cyan-500/30 hover:border-cyan-400/60",
+    text: "text-cyan-400",
+    glow: "shadow-cyan-500/5 hover:shadow-cyan-400/20",
+    numText: "text-cyan-500/20 group-hover:text-cyan-400/40"
+  },
+  {
+    bg: "bg-gradient-to-br from-indigo-500/10 via-indigo-950/20 to-transparent",
+    border: "border-indigo-500/30 hover:border-indigo-400/60",
+    text: "text-indigo-400",
+    glow: "shadow-indigo-500/5 hover:shadow-indigo-400/20",
+    numText: "text-indigo-500/20 group-hover:text-indigo-400/40"
+  },
+  {
+    bg: "bg-gradient-to-br from-emerald-500/10 via-emerald-950/20 to-transparent",
+    border: "border-emerald-500/30 hover:border-emerald-400/60",
+    text: "text-emerald-400",
+    glow: "shadow-emerald-500/5 hover:shadow-emerald-400/20",
+    numText: "text-emerald-500/20 group-hover:text-emerald-400/40"
+  },
+  {
+    bg: "bg-gradient-to-br from-amber-500/10 via-amber-950/20 to-transparent",
+    border: "border-amber-500/30 hover:border-amber-400/60",
+    text: "text-amber-400",
+    glow: "shadow-amber-500/5 hover:shadow-amber-400/20",
+    numText: "text-amber-500/20 group-hover:text-amber-400/40"
+  }
+];
+
 export default function AppDemoDetail({ app, onBack }: Props) {
   const [isExploring, setIsExploring] = useState(false);
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -131,31 +162,47 @@ export default function AppDemoDetail({ app, onBack }: Props) {
             </div>
 
             {/* BÉNÉFICES DÉTAILLÉS */}
-            <div className="py-16 px-6 bg-[#070d1a]">
-              <div className="max-w-5xl mx-auto">
-                <div className="text-center mb-12">
-                  <h2 className="text-3xl font-black mb-3">Ce que ce module vous apporte</h2>
-                  <p className="text-white/40 text-base max-w-xl mx-auto">Chaque fonctionnalité a été conçue spécifiquement pour les défis hospitaliers de l'Hôpital Ndamatou.</p>
+            <div className="py-20 px-6 bg-[#050b16] relative overflow-hidden border-t border-white/[0.04]">
+              {/* Extra background glow */}
+              <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[300px] bg-cyan-500/5 rounded-full blur-[120px] pointer-events-none" />
+
+              <div className="max-w-5xl mx-auto relative z-10">
+                <div className="text-center mb-16">
+                  <div className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-cyan-500/10 border border-cyan-500/20 text-xs font-bold uppercase tracking-widest text-cyan-400 mb-4">
+                    Valeur Ajoutée & Impact
+                  </div>
+                  <h2 className="text-4xl font-extrabold mb-4 tracking-tight">
+                    Ce que ce module <span className="bg-clip-text text-transparent bg-gradient-to-r from-cyan-400 via-sky-400 to-indigo-400">vous apporte</span>
+                  </h2>
+                  <p className="text-white/50 text-base max-w-xl mx-auto leading-relaxed">
+                    Chaque fonctionnalité a été conçue spécifiquement pour relever les défis de l'Hôpital Ndamatou.
+                  </p>
                 </div>
 
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                   {app.valueAdded.map((val, idx) => {
-                    const col = BENEFIT_COLORS[idx % BENEFIT_COLORS.length];
+                    const style = BENEFIT_STYLES[idx % BENEFIT_STYLES.length];
                     return (
                       <div
                         key={idx}
-                        className="group relative rounded-2xl border border-white/[0.07] bg-white/[0.02] hover:bg-white/[0.04] p-6 transition-all duration-300 hover:-translate-y-1 hover:border-white/[0.12] hover:shadow-xl overflow-hidden"
+                        className={`group relative rounded-2xl border ${style.border} ${style.bg} p-8 transition-all duration-300 hover:-translate-y-1.5 shadow-lg ${style.glow} overflow-hidden`}
                       >
-                        {/* Number indicator */}
-                        <div className="absolute top-4 right-4 text-5xl font-black text-white/[0.04] select-none pointer-events-none">
+                        {/* Neon floating number */}
+                        <div className={`absolute top-4 right-6 text-6xl font-black ${style.numText} select-none pointer-events-none transition-colors duration-300 font-mono`}>
                           {String(idx + 1).padStart(2, '0')}
                         </div>
                         
-                        <div className={`inline-flex items-center justify-center w-12 h-12 rounded-xl ${col.bg} border ${col.border} ${col.text} mb-4`}>
-                          {BENEFIT_ICONS[idx % BENEFIT_ICONS.length]}
+                        <div className="flex items-start gap-4">
+                          <div className={`inline-flex items-center justify-center w-12 h-12 rounded-xl bg-white/[0.04] border border-white/[0.08] ${style.text} mb-4 shrink-0 shadow-inner`}>
+                            {BENEFIT_ICONS[idx % BENEFIT_ICONS.length]}
+                          </div>
+                          <div className="flex-1">
+                            <span className={`inline-block text-[9px] font-black uppercase tracking-wider px-2 py-0.5 rounded bg-white/[0.04] border border-white/[0.06] ${style.text} mb-3`}>
+                              Bénéfice Clé
+                            </span>
+                            <p className="text-base font-bold text-white leading-relaxed">{val}</p>
+                          </div>
                         </div>
-                        
-                        <p className="text-base font-semibold text-white/90 leading-relaxed">{val}</p>
                       </div>
                     );
                   })}
@@ -164,17 +211,25 @@ export default function AppDemoDetail({ app, onBack }: Props) {
             </div>
 
             {/* CALL TO ACTION */}
-            <div className="py-16 px-6 bg-gradient-to-t from-[#060c16] to-[#070d1a] text-center border-t border-white/[0.06]">
-              <div className="max-w-2xl mx-auto">
-                <h3 className="text-2xl font-black mb-3">Prêt à explorer le module ?</h3>
-                <p className="text-white/40 mb-8 text-base">Accédez au tableau de bord simulé en conditions réelles pour vous faire une idée précise de l'interface de travail.</p>
+            <div className="py-20 px-6 bg-gradient-to-t from-[#040810] to-[#050b16] relative overflow-hidden border-t border-white/[0.04]">
+              <div className="absolute bottom-0 right-0 w-[300px] h-[300px] bg-indigo-500/5 rounded-full blur-[100px] pointer-events-none" />
+              <div className="absolute top-0 left-0 w-[300px] h-[300px] bg-cyan-500/5 rounded-full blur-[100px] pointer-events-none" />
+
+              <div className="max-w-3xl mx-auto text-center relative z-10">
+                <div className="inline-flex items-center gap-1 px-3 py-1 rounded-full bg-cyan-500/10 border border-cyan-500/20 text-[10px] font-extrabold uppercase tracking-widest text-cyan-400 mb-6">
+                  Démonstration Interactive
+                </div>
+                <h3 className="text-3xl md:text-4xl font-extrabold mb-4">Prêt à explorer le module ?</h3>
+                <p className="text-white/50 mb-10 text-base max-w-xl mx-auto leading-relaxed">
+                  Accédez au tableau de bord simulé en conditions réelles pour vous faire une idée précise de l'ergonomie et de la simplicité de l'interface de travail.
+                </p>
                 <button
                   onClick={() => setIsExploring(true)}
-                  className="btn-primary text-lg px-12 py-4 flex items-center gap-3 mx-auto shadow-xl shadow-primary/20"
+                  className="btn-primary text-lg px-12 py-4 flex items-center gap-3 mx-auto shadow-2xl shadow-cyan-500/20 hover:scale-105 active:scale-95 transition-all duration-300"
                 >
                   <Play className="w-5 h-5 fill-current" /> Explorer le Tableau de Bord
                 </button>
-                <p className="text-xs text-white/20 mt-4 flex items-center justify-center gap-1.5">
+                <p className="text-xs text-white/30 mt-4 flex items-center justify-center gap-1.5">
                   <Database className="w-3.5 h-3.5" /> Données simulées • Toutes les actions sont désactivées en version démo
                 </p>
               </div>
