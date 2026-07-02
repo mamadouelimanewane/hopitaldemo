@@ -1,16 +1,24 @@
 import { useState } from 'react';
 import LandingPage from './pages/LandingPage';
-import Dashboard from './pages/Dashboard';
+import AppDemoDetail from './pages/AppDemoDetail';
+import { APPS_METADATA } from './lib/appsMetadata';
 
 function App() {
-  const [currentView, setCurrentView] = useState<'landing' | 'dashboard'>('landing');
+  const [selectedAppId, setSelectedAppId] = useState<string | null>(null);
+
+  const selectedApp = APPS_METADATA.find(app => app.id === selectedAppId);
 
   return (
-    <div className="min-h-screen bg-background text-white font-sans overflow-x-hidden selection:bg-primary selection:text-white">
-      {currentView === 'landing' ? (
-        <LandingPage onNavigate={() => setCurrentView('dashboard')} />
+    <div className="min-h-screen bg-[#050b14] text-white font-sans overflow-x-hidden selection:bg-primary selection:text-white">
+      {selectedApp ? (
+        <AppDemoDetail 
+          app={selectedApp} 
+          onBack={() => setSelectedAppId(null)} 
+        />
       ) : (
-        <Dashboard onNavigate={() => setCurrentView('landing')} />
+        <LandingPage 
+          onSelectApp={(appId) => setSelectedAppId(appId)} 
+        />
       )}
     </div>
   );
