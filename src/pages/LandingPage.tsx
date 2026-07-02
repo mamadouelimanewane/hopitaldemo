@@ -23,12 +23,12 @@ export default function LandingPage({ onNavigate }: Props) {
       {/* Navigation */}
       <nav className="relative z-10 flex items-center justify-between px-8 py-6 max-w-7xl mx-auto w-full animate-fade-in">
         <div className="flex items-center gap-3">
-          <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-primary to-secondary flex items-center justify-center shadow-lg shadow-primary/25">
-            <Stethoscope className="w-6 h-6 text-white" />
+          <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-cyan-400 to-indigo-500 flex items-center justify-center shadow-lg shadow-cyan-400/25">
+            <Stethoscope className="w-7 h-7 text-white" />
           </div>
           <div>
-            <span className="text-xl font-black tracking-tight block leading-tight">Ndamatou<span className="text-primary">.Suite</span></span>
-            <span className="text-[10px] uppercase tracking-widest text-primary/80 font-bold block">Next-Gen Hospital</span>
+            <span className="text-3xl font-extrabold tracking-tight block leading-tight text-white">Ndamatou<span className="text-cyan-400">.Suite</span></span>
+            <span className="text-[10px] uppercase tracking-widest text-cyan-400/80 font-bold block">Next-Gen Hospital</span>
           </div>
         </div>
         <div className="flex items-center gap-4">

@@ -33,10 +33,10 @@ export default function Dashboard({ onNavigate }: Props) {
       {/* Sidebar */}
       <aside className="w-64 border-r border-border bg-surface/50 backdrop-blur-xl flex flex-col animate-fade-in">
         <div className="h-16 flex items-center px-6 border-b border-border">
-          <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-primary to-secondary flex items-center justify-center mr-3">
+          <div className="w-9 h-9 rounded-lg bg-gradient-to-br from-cyan-400 to-indigo-500 flex items-center justify-center mr-3 shadow-md shadow-cyan-400/20">
             <Activity className="w-5 h-5 text-white" />
           </div>
-          <span className="font-bold text-lg tracking-tight">Ndamatou<span className="text-primary">.OS</span></span>
+          <span className="font-extrabold text-xl tracking-tight text-white">Ndamatou<span className="text-cyan-400">.Suite</span></span>
         </div>
         
         <div className="p-4 flex-1">
