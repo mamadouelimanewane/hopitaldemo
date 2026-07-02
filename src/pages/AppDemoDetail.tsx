@@ -44,8 +44,12 @@ export default function AppDemoDetail({ app, onBack }: Props) {
       <header className="relative z-10 border-b border-white/[0.06] bg-[#0a1424]/90 backdrop-blur-xl px-6 py-4 flex items-center justify-between">
         <div className="flex items-center gap-4">
           <button
-            onClick={onBack}
-            className="p-2 rounded-xl hover:bg-white/5 border border-white/[0.08] hover:border-white/[0.15] text-white/70 hover:text-white transition-all flex items-center justify-center"
+            type="button"
+            onClick={(e) => {
+              e.preventDefault();
+              onBack();
+            }}
+            className="p-2 rounded-xl hover:bg-white/10 border border-white/[0.08] hover:border-white/[0.2] text-white/70 hover:text-white transition-all flex items-center justify-center cursor-pointer relative z-30"
           >
             <ArrowLeft className="w-5 h-5" />
           </button>
