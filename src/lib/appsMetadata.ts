@@ -1057,7 +1057,306 @@ export const APPS_METADATA: AppMetadata[] = [
     ],
     items: [
       { id: "DASRI-482", poids: "12.4 kg", service: "Bloc Opératoire", date: "02/07/2026 08h30" },
-      { id: "DASRI-483", poids: "8.1 kg", service: "Laboratoire", date: "02/07/2026 09h00" }
+    ]
+  },
+  {
+    id: "bloc-operatoire",
+    name: "Bloc Opératoire",
+    emoji: "🔪",
+    category: "soins",
+    categoryLabel: "Soin & Diagnostic",
+    tagline: "Gestion de Bloc Opératoire",
+    pitch: "Planning des salles, checklist sécurité chirurgicale OMS, et suivi du temps de brancardage pour une efficacité maximale.",
+    valueAdded: [
+      "Checklist OMS interactive intégrée avant incision",
+      "Tableau de bord de suivi du temps d'occupation des salles",
+      "Coordination fluide avec le service de stérilisation",
+      "Traçabilité complète des équipes chirurgicales"
+    ],
+    stats: [
+      { label: "Salles Opérationnelles", value: "6 / 8", color: "text-accent" },
+      { label: "Interventions", value: "14", color: "text-primary" },
+      { label: "Taux d'Occupation", value: "82%", color: "text-secondary" }
+    ],
+    itemsTitle: "État des Salles - En Direct",
+    itemsHeaders: [
+      { key: "salle", label: "Salle" },
+      { key: "interv", label: "Intervention" },
+      { key: "status", label: "Statut" }
+    ],
+    items: [
+      { salle: "Salle 1", interv: "Appendicectomie", status: "En cours" },
+      { salle: "Salle 3", interv: "Césarienne", status: "Terminée" }
+    ]
+  },
+  {
+    id: "urgences",
+    name: "Tableau de bord SAU",
+    emoji: "🚨",
+    category: "flux",
+    categoryLabel: "Logistique & Flux",
+    tagline: "Service d'Accueil des Urgences",
+    pitch: "Pilotage central du flux des patients admis aux urgences, avec suivi d'occupation des box et temps d'attente en direct.",
+    valueAdded: [
+      "Vue d'ensemble sur l'occupation des box d'examen",
+      "Alertes automatiques sur les temps d'attente excessifs",
+      "Synchronisation avec le chatbot de triage IA",
+      "Coordination immédiate avec les brancardiers"
+    ],
+    stats: [
+      { label: "Patients admis", value: "42", color: "text-primary" },
+      { label: "Temps d'attente", value: "45 min", color: "text-accent" },
+      { label: "Box occupés", value: "100%", color: "text-red-500" }
+    ],
+    itemsTitle: "Patients en attente de box",
+    itemsHeaders: [
+      { key: "pat", label: "Patient" },
+      { key: "tri", label: "Triage" },
+      { key: "attente", label: "Attente" }
+    ],
+    items: [
+      { pat: "Modou Fall", tri: "Urgence Absolue", attente: "0 min (Pris en charge)" },
+      { pat: "Aminata Ndiaye", tri: "Urgence Relative", attente: "25 min" }
+    ]
+  },
+  {
+    id: "imagerie",
+    name: "PACS / RIS Généraliste",
+    emoji: "🩻",
+    category: "soins",
+    categoryLabel: "Soin & Diagnostic",
+    tagline: "Workflow Radiologie Complet",
+    pitch: "Système complet de gestion d'imagerie médicale, d'archivage PACS et de reporting structuré pour tous les examens.",
+    valueAdded: [
+      "Visualisation haute définition des DICOM",
+      "Intégration transparente avec le Dossier Patient",
+      "Outils de dictée vocale pour les comptes rendus",
+      "Archivage sécurisé à long terme des clichés"
+    ],
+    stats: [
+      { label: "Examens du jour", value: "112", color: "text-primary" },
+      { label: "CR validés", value: "85", color: "text-accent" },
+      { label: "Stockage utilisé", value: "14 TB", color: "text-secondary" }
+    ],
+    itemsTitle: "Examens Récents",
+    itemsHeaders: [
+      { key: "pat", label: "Patient" },
+      { key: "type", label: "Examen" },
+      { key: "status", label: "Statut CR" }
+    ],
+    items: [
+      { pat: "Ibrahima Ba", type: "Radio Thorax", status: "Validé" },
+      { pat: "Fatou Diop", type: "Scanner Abdo", status: "En dictée" }
+    ]
+  },
+  {
+    id: "ias-watch",
+    name: "IAS Watch",
+    emoji: "🦠",
+    category: "gestion",
+    categoryLabel: "Gestion & RH",
+    tagline: "Surveillance des Infections",
+    pitch: "Surveillance et prévention des Infections Associées aux Soins (IAS) pour garantir la sécurité sanitaire des patients hospitalisés.",
+    valueAdded: [
+      "Suivi quotidien des cas d'infections nosocomiales",
+      "Cartographie des foyers d'infection par service",
+      "Indicateurs de consommation des solutions hydro-alcooliques",
+      "Alertes d'isolement préventif automatique"
+    ],
+    stats: [
+      { label: "Taux IAS global", value: "2.1%", color: "text-accent" },
+      { label: "Isolement en cours", value: "4", color: "text-primary" },
+      { label: "Jours sans épidémie", value: "124", color: "text-secondary" }
+    ],
+    itemsTitle: "Veille Infectiologique",
+    itemsHeaders: [
+      { key: "secteur", label: "Secteur" },
+      { key: "bact", label: "Bactérie Isolée" },
+      { key: "act", label: "Action" }
+    ],
+    items: [
+      { secteur: "Réanimation", bact: "BMR (Staphylocoque)", act: "Isolement Contact" },
+      { secteur: "Chirurgie", bact: "Aucune", act: "Surveillance de routine" }
+    ]
+  },
+  {
+    id: "proches-aidants",
+    name: "Portail Proches-Aidants",
+    emoji: "👨‍👩‍👧‍👦",
+    category: "reseau",
+    categoryLabel: "Patient & Réseau",
+    tagline: "Suivi à distance par la famille",
+    pitch: "Application sécurisée permettant aux familles de suivre l'état d'un patient hospitalisé, de communiquer et d'organiser les visites.",
+    valueAdded: [
+      "Mises à jour quotidiennes de l'état clinique (simplifiées)",
+      "Planification des horaires de visites pour éviter l'affluence",
+      "Messagerie sécurisée avec l'équipe soignante",
+      "Transmission de documents de sortie"
+    ],
+    stats: [
+      { label: "Familles connectées", value: "312", color: "text-primary" },
+      { label: "Visites planifiées", value: "45", color: "text-accent" },
+      { label: "Messages échangés", value: "128", color: "text-secondary" }
+    ],
+    itemsTitle: "Demandes de Visite (Aujourd'hui)",
+    itemsHeaders: [
+      { key: "pat", label: "Patient" },
+      { key: "vis", label: "Visiteur" },
+      { key: "heure", label: "Créneau" }
+    ],
+    items: [
+      { pat: "Awa Ndour", vis: "Oumar Ndour (Fils)", heure: "14h00 - 15h00" },
+      { pat: "Cheikh Fall", vis: "Aminata Seck (Épouse)", heure: "15h30 - 16h30" }
+    ]
+  },
+  {
+    id: "consentement",
+    name: "e-Consentement",
+    emoji: "✍️",
+    category: "gestion",
+    categoryLabel: "Gestion & RH",
+    tagline: "Consentement Éclairé Électronique",
+    pitch: "Signature numérique sécurisée des consentements éclairés avant tout acte chirurgical ou procédure invasive.",
+    valueAdded: [
+      "Archivage numérique certifié et horodaté",
+      "Vidéos explicatives intégrées avant signature",
+      "Signature sur tablette avec biométrie ou stylet",
+      "Intégration directe au Dossier Médical Patient"
+    ],
+    stats: [
+      { label: "Consentements signés", value: "1 450", color: "text-primary" },
+      { label: "En attente bloc", value: "3", color: "text-red-500" },
+      { label: "Taux de dématérialisation", value: "100%", color: "text-accent" }
+    ],
+    itemsTitle: "Consentements du jour",
+    itemsHeaders: [
+      { key: "pat", label: "Patient" },
+      { key: "acte", label: "Procédure" },
+      { key: "status", label: "Statut" }
+    ],
+    items: [
+      { pat: "Ousmane Sylla", acte: "Appendicectomie", status: "Signé (8h30)" },
+      { pat: "Mame Diarra Niang", acte: "Césarienne", status: "En attente de signature" }
+    ]
+  },
+  {
+    id: "bien-etre-soignant",
+    name: "Qualité de Vie au Travail",
+    emoji: "🧘",
+    category: "gestion",
+    categoryLabel: "Gestion & RH",
+    tagline: "Bien-être et Prévention Burn-Out",
+    pitch: "Suivi du climat social, de la charge mentale et prévention des risques psycho-sociaux (RPS) au sein du personnel soignant.",
+    valueAdded: [
+      "Baromètre anonyme de l'humeur des équipes",
+      "Alertes de surcharge horaires et d'heures supplémentaires",
+      "Module de reconnaissance entre pairs (Kudos)",
+      "Soutien psychologique accessible en un clic"
+    ],
+    stats: [
+      { label: "Indice de Bien-Être", value: "7.8 / 10", color: "text-accent" },
+      { label: "Heures sup moyennes", value: "+12h / mois", color: "text-red-500" },
+      { label: "Kudos envoyés", value: "45", color: "text-primary" }
+    ],
+    itemsTitle: "Alertes Surcharge (Derniers 7 jours)",
+    itemsHeaders: [
+      { key: "secteur", label: "Secteur" },
+      { key: "alerte", label: "Motif" },
+      { key: "action", label: "Action QVT" }
+    ],
+    items: [
+      { secteur: "Urgences de Nuit", alerte: "Garde doublée consécutive", action: "Repos compensateur accordé" },
+      { secteur: "Réanimation", alerte: "Tension psychologique signalée", action: "Cellule d'écoute activée" }
+    ]
+  },
+  {
+    id: "sterilisation",
+    name: "Stérilisation Centrale",
+    emoji: "🧼",
+    category: "flux",
+    categoryLabel: "Logistique & Flux",
+    tagline: "Traçabilité de l'Instrumentation",
+    pitch: "Gestion du circuit de stérilisation des dispositifs médicaux réutilisables (DMR), du pré-désinfecté jusqu'au bloc opératoire.",
+    valueAdded: [
+      "Traçabilité à l'instrument unique via code Datamatrix",
+      "Suivi des cycles des autoclaves et validation des lots",
+      "Connexion directe avec le planning du bloc opératoire",
+      "Alertes de maintenance préventive des stérilisateurs"
+    ],
+    stats: [
+      { label: "Boîtes stérilisées", value: "42 / jour", color: "text-primary" },
+      { label: "Instruments suivis", value: "2 840", color: "text-accent" },
+      { label: "Autoclaves actifs", value: "3 / 3", color: "text-secondary" }
+    ],
+    itemsTitle: "Cycles de Stérilisation en cours",
+    itemsHeaders: [
+      { key: "cycle", label: "N° Lot" },
+      { key: "prog", label: "Programme" },
+      { key: "status", label: "Statut" }
+    ],
+    items: [
+      { cycle: "LOT-2026-07-07-A", prog: "Prion 134°C - 18min", status: "En cours (Phase séchage)" },
+      { cycle: "LOT-2026-07-07-B", prog: "Standard 134°C - 5min", status: "Libération Validée" }
+    ]
+  },
+  {
+    id: "cyber-soc",
+    name: "Cyber-SOC Hôpital",
+    emoji: "🛡️",
+    category: "gestion",
+    categoryLabel: "Gestion & RH",
+    tagline: "Sécurité & SOC Dédié",
+    pitch: "Centre opérationnel de sécurité (SOC) spécifique au milieu hospitalier pour protéger les données patients contre les cyber-attaques.",
+    valueAdded: [
+      "Surveillance 24/7 des réseaux et équipements biomédicaux (IoT)",
+      "Playbooks de réponse automatique aux incidents (Ransomware)",
+      "Isolation réseau immédiate d'un poste compromis",
+      "Audit continu de conformité des accès aux dossiers médicaux"
+    ],
+    stats: [
+      { label: "Attaques bloquées", value: "14 / semaine", color: "text-primary" },
+      { label: "Taux de disponibilité", value: "99.9%", color: "text-accent" },
+      { label: "Équipements surveillés", value: "1 240", color: "text-secondary" }
+    ],
+    itemsTitle: "Dernières alertes de sécurité",
+    itemsHeaders: [
+      { key: "alerte", label: "Menace" },
+      { key: "cible", label: "Cible" },
+      { key: "status", label: "Résolution" }
+    ],
+    items: [
+      { alerte: "Tentative d'intrusion (Brute Force)", cible: "Serveur PACS", status: "Bloquée (IP bannie)" },
+      { alerte: "Connexion anormale hors-heures", cible: "Poste Urgences", status: "Enquête en cours" }
+    ]
+  },
+  {
+    id: "maintenance-batiment",
+    name: "Maintenance Bâtiment",
+    emoji: "🏢",
+    category: "flux",
+    categoryLabel: "Logistique & Flux",
+    tagline: "Infrastructures & Ascenseurs",
+    pitch: "Gestion centralisée de la maintenance générale des infrastructures hospitalières, hors équipements biomédicaux.",
+    valueAdded: [
+      "Surveillance de la Climatisation, Ventilation, Chauffage (CVC)",
+      "Suivi de l'état des ascenseurs et des portes automatiques",
+      "Gestion des groupes électrogènes de secours",
+      "Ticketing simple pour le personnel signalant une panne"
+    ],
+    stats: [
+      { label: "Tickets ouverts", value: "12", color: "text-primary" },
+      { label: "Groupes secours", value: "100% Ops", color: "text-accent" },
+      { label: "Délai de résolution", value: "2h moyenne", color: "text-secondary" }
+    ],
+    itemsTitle: "Interventions Techniques en Cours",
+    itemsHeaders: [
+      { key: "lieu", label: "Localisation" },
+      { key: "prob", label: "Problème" },
+      { key: "tech", label: "Technicien" }
+    ],
+    items: [
+      { lieu: "Ascenseur Visiteurs B", prob: "Porte bloquée", tech: "Équipe 1 (Sur site)" },
+      { lieu: "Réanimation", prob: "Climatisation défaillante", tech: "Équipe CVC (En urgence)" }
     ]
   }
 ];
